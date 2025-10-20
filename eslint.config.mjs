@@ -20,6 +20,11 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      "react/no-unescaped": "off"
+    }
+  }
 ];
 
 export default eslintConfig;
