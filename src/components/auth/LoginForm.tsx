@@ -47,57 +47,61 @@ export default function LoginForm() {
     }
   }
   return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
-        <CardDescription>Welcome back! Enter your credentials to continue.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form className="grid gap-6" onSubmit={handleSubmit}>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <div className="flex items-center">
-              <Label htmlFor="password">Password</Label>
-              <Link href="#" className="ml-auto text-sm underline-offset-4 hover:underline">
-                Forgot password?
-              </Link>
+    <div className="w-full max-w-md">
+      <Card className="border border-border/50 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/5 border-b border-border/50">
+          <CardTitle className="text-3xl font-bold text-foreground">Welcome Back</CardTitle>
+          <CardDescription className="text-base text-muted-foreground">Sign in to your GoatNote account</CardDescription>
+        </CardHeader>
+        <CardContent className="pt-8">
+          <form className="grid gap-6" onSubmit={handleSubmit}>
+            <div className="grid gap-3">
+              <Label htmlFor="email" className="text-base font-semibold">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-11 rounded-lg border-border/50"
+                required
+              />
             </div>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          {/* Using toasts for feedback; no inline error display */}
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Signing in..." : "Login"}
+            <div className="grid gap-3">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-base font-semibold">Password</Label>
+                <Link href="#" className="text-sm text-primary hover:text-primary/80 underline-offset-4 hover:underline transition-colors">
+                  Forgot password?
+                </Link>
+              </div>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="h-11 rounded-lg border-border/50"
+                required
+              />
+            </div>
+            <Button type="submit" className="h-11 w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all mt-2" disabled={loading}>
+              {loading ? "Signing in..." : "Sign In"}
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex-col gap-4 border-t border-border/50 bg-muted/30 py-6">
+          <Button variant="outline" className="h-11 w-full border-border/50 hover:bg-muted rounded-lg font-semibold" onClick={handleGoogle} disabled={loading}>
+            🔐 Continue with Google
           </Button>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button variant="outline" className="w-full" onClick={handleGoogle} disabled={loading}>
-          Continue with Google
-        </Button>
-        <p className="text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="font-medium text-primary underline-offset-4 hover:underline">
-            Sign up
-          </Link>
-        </p>
-      </CardFooter>
-    </Card>
+          <p className="text-center text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="font-semibold text-primary hover:text-primary/80 underline-offset-4 hover:underline transition-colors">
+              Create one
+            </Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }
 

@@ -40,13 +40,11 @@ export default function AskAIModal({
     const trimmed = input.trim();
     if (!trimmed || loading) return;
 
-    // Show user message immediately
     setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
     setInput("");
     setLoading(true);
 
     try {
-      // Call backend Gemini route
       const res = await fetch("/api/ask-ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -63,19 +61,15 @@ export default function AskAIModal({
           typeof data?.error === "string"
             ? data.error
             : "The AI request failed. Please try again.";
-        setMessages((prev) => [
-          ...prev,
-          { role: "ai", content: msg },
-        ]);
+        setMessages((prev) => [...prev, { role: "ai", content: msg }]);
         return;
       }
 
       const aiResponse =
-        (typeof data?.answer === "string" && data.answer.trim().length > 0)
+        typeof data?.answer === "string" && data.answer.trim().length > 0
           ? data.answer
           : "I couldn't produce a response. If this persists, try rephrasing your question.";
 
-      // Add AI message
       setMessages((prev) => [...prev, { role: "ai", content: aiResponse }]);
     } catch (err) {
       console.error(err);
@@ -90,33 +84,36 @@ export default function AskAIModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl h-[85vh] flex flex-col p-0 gap-0">
-        <DialogHeader className="px-6 pt-6 pb-4 border-b">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-              <Sparkles className="h-4 w-4 text-primary" />
+      <DialogContent className="max-w-5xl h-[85vh] flex flex-col overflow-hidden rounded-2xl border bg-white text-gray-900 shadow-2xl dark:bg-neutral-950 dark:text-white dark:border-neutral-800">
+        {/* Header */}
+        <DialogHeader className="px-8 pt-6 pb-4 border-b border-neutral-200 dark:border-neutral-800">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-r from-indigo-400 to-purple-500 text-white shadow-md">
+              <Sparkles className="h-4 w-4" />
             </div>
             <div>
-              <DialogTitle className="text-xl">Ask AI About Your Note</DialogTitle>
-              <DialogDescription className="text-sm">
-                Chat with AI to summarize, extract insights, or ask questions about your note.
+              <DialogTitle className="text-xl font-semibold">
+                Ask AI About Your Note
+              </DialogTitle>
+              <DialogDescription className="text-sm text-gray-500 dark:text-gray-400">
+                Summarize, expand, or ask anything about your note with AI.
               </DialogDescription>
             </div>
           </div>
         </DialogHeader>
 
         {/* Note Preview */}
-        <div className="mx-6 mt-4 rounded-lg border bg-muted/30 p-4">
-          <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <div className="mx-8 mt-5 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm leading-relaxed text-gray-700 dark:bg-neutral-900 dark:border-neutral-800 dark:text-gray-300">
+          <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
             Your Note
           </div>
-          <div className="max-h-32 overflow-auto whitespace-pre-wrap text-sm text-foreground">
+          <div className="max-h-32 overflow-auto whitespace-pre-wrap text-[0.9rem]">
             {noteText || "(Your note is empty)"}
           </div>
         </div>
 
         {/* Chat Area */}
-        <div className="flex-1 overflow-auto px-6 py-4 space-y-4">
+        <div className="flex-1 overflow-y-auto px-8 py-6 space-y-5 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700">
           {messages.map((m, idx) => (
             <div
               key={idx}
@@ -125,38 +122,35 @@ export default function AskAIModal({
               }`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                className={`max-w-[80%] rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm ${
                   m.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground"
+                    ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
+                    : "bg-gray-100 text-gray-800 dark:bg-neutral-800 dark:text-gray-100"
                 }`}
               >
                 <div className="text-xs font-semibold mb-1 opacity-70">
                   {m.role === "ai" ? "AI Assistant" : "You"}
                 </div>
-                <div className="whitespace-pre-wrap text-sm leading-relaxed">
-                  {m.content}
-                </div>
+                <div className="whitespace-pre-wrap">{m.content}</div>
               </div>
             </div>
           ))}
+
           {loading && (
             <div className="flex justify-start">
-              <div className="max-w-[80%] rounded-2xl bg-muted px-4 py-3">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Sparkles className="h-4 w-4 animate-pulse" />
-                  <span className="italic">AI is thinking...</span>
-                </div>
+              <div className="max-w-[80%] rounded-2xl bg-gray-100 dark:bg-neutral-800 px-5 py-3.5 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 animate-pulse text-indigo-500" />
+                <span className="italic">AI is thinking...</span>
               </div>
             </div>
           )}
         </div>
 
-        {/* Input + Send */}
-        <div className="border-t bg-muted/20 px-6 py-4">
+        {/* Input Area */}
+        <div className="border-t border-neutral-200 bg-neutral-50 px-8 py-5 dark:border-neutral-800 dark:bg-neutral-900">
           <div className="flex items-center gap-3">
             <input
-              className="h-11 flex-1 rounded-lg border bg-background px-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="h-12 flex-1 rounded-xl border border-neutral-300 bg-white px-4 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 dark:bg-neutral-950 dark:border-neutral-700 dark:text-white dark:placeholder:text-gray-400"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask a question about your note..."
@@ -172,7 +166,7 @@ export default function AskAIModal({
               onClick={sendMessage}
               size="lg"
               disabled={loading}
-              className="h-11 px-6"
+              className="h-12 px-6 rounded-xl font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:opacity-90 transition"
             >
               <Send className="h-4 w-4 mr-2" />
               Send

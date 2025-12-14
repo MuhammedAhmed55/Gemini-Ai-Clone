@@ -45,58 +45,59 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.98 0.001 0);
+  --foreground: oklch(0.15 0.04 280);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.15 0.04 280);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: oklch(0.15 0.04 280);
+  --primary: oklch(0.55 0.23 280);
+  --primary-foreground: oklch(0.98 0.001 0);
+  --secondary: oklch(0.92 0.03 45);
+  --secondary-foreground: oklch(0.15 0.04 280);
+  --muted: oklch(0.92 0.01 280);
+  --muted-foreground: oklch(0.58 0.04 280);
+  --accent: oklch(0.65 0.2 260);
+  --accent-foreground: oklch(0.98 0.001 0);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(0.92 0.01 280);
+  --input: oklch(0.95 0.01 280);
+  --ring: oklch(0.55 0.23 280);
+  --chart-1: oklch(0.55 0.23 280);
+  --chart-2: oklch(0.65 0.2 260);
+  --chart-3: oklch(0.6 0.18 45);
+  --chart-4: oklch(0.7 0.15 150);
+  --chart-5: oklch(0.75 0.12 200);
+  --sidebar: oklch(0.98 0.001 0);
+  --sidebar-foreground: oklch(0.15 0.04 280);
+  --sidebar-primary: oklch(0.55 0.23 280);
+  --sidebar-primary-foreground: oklch(0.98 0.001 0);
+  --sidebar-accent: oklch(0.92 0.03 45);
+  --sidebar-accent-foreground: oklch(0.15 0.04 280);
+  --sidebar-border: oklch(0.92 0.01 280);
+  --sidebar-ring: oklch(0.55 0.23 280);
+  
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.12 0.03 280);
+  --foreground: oklch(0.95 0.01 0);
+  --card: oklch(0.18 0.035 280);
+  --card-foreground: oklch(0.95 0.01 0);
+  --popover: oklch(0.18 0.035 280);
+  --popover-foreground: oklch(0.95 0.01 0);
+  --primary: oklch(0.75 0.18 280);
+  --primary-foreground: oklch(0.12 0.03 280);
+  --secondary: oklch(0.35 0.08 45);
+  --secondary-foreground: oklch(0.95 0.01 0);
+  --muted: oklch(0.28 0.04 280);
+  --muted-foreground: oklch(0.65 0.04 280);
+  --accent: oklch(0.8 0.15 260);
+  --accent-foreground: oklch(0.12 0.03 280);
+  --destructive: oklch(0.75 0.18 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.75 0.18 280);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -116,8 +117,183 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    font-family: var(--font-sans);
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Professional Animations and Transitions */
+@layer utilities {
+  .smooth-gradient {
+    @apply bg-gradient-to-br transition-all duration-500;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.01];
+  }
+
+  .button-hover {
+    @apply transition-all duration-200 active:scale-95;
+  }
+
+  /* Design System: Consistent Cards */
+  .ds-card {
+    @apply rounded-xl border border-border/50 bg-card shadow-lg overflow-hidden transition-all hover:shadow-xl;
+  }
+
+  .ds-card-header {
+    @apply bg-gradient-to-r from-primary/10 via-accent/10 to-primary/5 border-b border-border/50 px-6 py-4;
+  }
+
+  /* Design System: Consistent Buttons */
+  .ds-button-primary {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 shadow-lg hover:shadow-xl transition-all;
+  }
+
+  .ds-button-secondary {
+    @apply border-2 border-accent/50 text-accent hover:bg-accent/10 font-semibold gap-2 transition-all;
+  }
+
+  /* Design System: Typography */
+  .ds-heading-lg {
+    @apply text-4xl font-bold tracking-tight text-foreground;
+  }
+
+  .ds-heading-md {
+    @apply text-3xl font-bold text-foreground;
+  }
+
+  .ds-text-muted {
+    @apply text-muted-foreground;
+  }
+
+  /* Design System: Spacing */
+  .ds-section-spacing {
+    @apply px-4 py-8 sm:px-6 lg:px-8;
+  }
+
+  .ds-content-max-width {
+    @apply mx-auto w-full max-w-5xl;
+  }
+
+  /* Design System: Gradient Backgrounds */
+  .ds-gradient-bg {
+    @apply min-h-screen bg-gradient-to-br from-background via-background to-primary/5;
+  }
+
+  /* Design System: Input Fields */
+  .ds-input {
+    @apply h-11 rounded-lg border-border/50 bg-card transition-all focus:ring-2 focus:ring-primary/50;
+  }
+
+  /* Custom scrollbar - using CSS instead of Tailwind utilities */
+  .custom-scrollbar {
+    scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+    scrollbar-width: thin;
+  }
+
+  .custom-scrollbar:hover {
+    scrollbar-color: hsl(var(--primary) / 0.5) transparent;
+  }
+
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  /* Slide in from left */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out;
+  }
+
+  /* Gradient animation */
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  /* Floating animation for illustration cards */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-15px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed-1 {
+    animation: float 6s ease-in-out 0.2s infinite;
+  }
+
+  .animate-float-delayed-2 {
+    animation: float 6s ease-in-out 0.4s infinite;
+  }
+
+  .animate-float-delayed-3 {
+    animation: float 6s ease-in-out 0.6s infinite;
+  }
+
+  /* Slow spin for badge */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
   }
 }

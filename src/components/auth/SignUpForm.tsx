@@ -76,64 +76,68 @@ export default function SignUpForm() {
     }
   }
   return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle className="text-2xl">Create account</CardTitle>
-        <CardDescription>Join GoatNote. It only takes a minute.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form className="grid gap-6" onSubmit={handleSubmit}>
-          <div className="grid gap-2">
-            <Label htmlFor="name">Name</Label>
-            <Input
-              id="name"
-              type="text"
-              placeholder="Your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          {/* Using toasts for feedback; no inline error display */}
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Creating..." : "Create account"}
+    <div className="w-full max-w-md">
+      <Card className="border border-border/50 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/5 border-b border-border/50">
+          <CardTitle className="text-3xl font-bold text-foreground">Create Account</CardTitle>
+          <CardDescription className="text-base text-muted-foreground">Join GoatNote and start organizing your ideas</CardDescription>
+        </CardHeader>
+        <CardContent className="pt-8">
+          <form className="grid gap-6" onSubmit={handleSubmit}>
+            <div className="grid gap-3">
+              <Label htmlFor="name" className="text-base font-semibold">Full Name</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="h-11 rounded-lg border-border/50"
+                required
+              />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="email" className="text-base font-semibold">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-11 rounded-lg border-border/50"
+                required
+              />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="password" className="text-base font-semibold">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="h-11 rounded-lg border-border/50"
+                required
+              />
+            </div>
+            <Button type="submit" className="h-11 w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all mt-2" disabled={loading}>
+              {loading ? "Creating account..." : "Create Account"}
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex-col gap-4 border-t border-border/50 bg-muted/30 py-6">
+          <Button variant="outline" className="h-11 w-full border-border/50 hover:bg-muted rounded-lg font-semibold" onClick={handleGoogle} disabled={loading}>
+            🔐 Continue with Google
           </Button>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button variant="outline" className="w-full" onClick={handleGoogle} disabled={loading}>
-          Continue with Google
-        </Button>
-        <p className="text-sm text-muted-foreground">
-          Already have an account?{" "}
-          <Link href="/login" className="font-medium text-primary underline-offset-4 hover:underline">
-            Log in
-          </Link>
-        </p>
-      </CardFooter>
-    </Card>
+          <p className="text-center text-sm text-muted-foreground">
+            Already have an account?{" "}
+            <Link href="/login" className="font-semibold text-primary hover:text-primary/80 underline-offset-4 hover:underline transition-colors">
+              Sign in
+            </Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
   )
-}
+  }
 
-  
