@@ -14,7 +14,8 @@ async function AppSidebar() {
   const user = await getUser()
   const supabase = await createClient()
 
-  let notes: any[] = []
+  type Note = { id: string; text: string; created_at: string; updated_at: string; author_id: string };
+  let notes: Note[] = []
 
   if (user) {
     const { data, error } = await supabase

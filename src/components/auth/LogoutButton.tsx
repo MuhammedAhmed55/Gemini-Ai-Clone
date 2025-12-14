@@ -20,8 +20,9 @@ export function LogoutButton() {
       // Navigate back to landing and refresh to update server components (Header)
       router.push("/")
       router.refresh()
-    } catch (err: any) {
-      toast.error(err?.message ?? "Failed to log out")
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to log out"
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }

@@ -9,7 +9,7 @@ import { createClient } from "@/auth/client";
 // Import toast notifications for user feedback (success, error, info messages)
 import { toast } from "sonner";
 // Import icons from lucide-react library for UI elements
-import { MessageCircle, PlusCircle, Save, BarChart3, Lightbulb, Clock, Share2, Copy, Check } from "lucide-react";
+import { MessageCircle, PlusCircle, Save, BarChart3, Lightbulb, Clock, Copy, Check } from "lucide-react";
 // Import Next.js navigation hooks to handle routing and URL parameters
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -73,7 +73,7 @@ export default function NotesPage() {
         // Store the note ID and content in state so user can edit it
         setNoteId(data.id);
         setNote(data.text || "");
-      } catch (e: any) {
+      } catch (e: unknown) {
         console.error(e);
         toast.error("Could not load the selected note.");
       }
@@ -151,9 +151,10 @@ export default function NotesPage() {
         toast.success("Note saved.");
         router.refresh();
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : "Failed to save note.";
       console.error(e);
-      toast.error(e?.message ?? "Failed to save note.");
+      toast.error(errorMessage);
     } finally {
       setIsSaving(false);
     }
@@ -313,7 +314,7 @@ export default function NotesPage() {
             <div>
               <p className="font-semibold text-foreground mb-1">AI-Powered Tips</p>
               <p className="text-sm text-muted-foreground">
-                Use the "Ask AI" button to get summaries, action items, refinements, and more about your notes. Our AI learns from your writing style!
+                Use the &quot;Ask AI&quot; button to get summaries, action items, refinements, and more about your notes. Our AI learns from your writing style!
               </p>
             </div>
           </div>

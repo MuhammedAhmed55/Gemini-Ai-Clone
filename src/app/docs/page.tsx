@@ -24,7 +24,7 @@ export default function DocsPage() {
           <div className="rounded-lg border p-6">
             <h2 className="text-lg font-semibold">Ask AI</h2>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-              <li>Open "Ask AI" to summarize or extract action items.</li>
+              <li>Open &quot;Ask AI&quot; to summarize or extract action items.</li>
               <li>Ask follow‑up questions to go deeper on a topic.</li>
               <li>Use concise prompts for best results.</li>
             </ul>

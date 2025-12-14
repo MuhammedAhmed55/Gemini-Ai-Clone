@@ -28,8 +28,9 @@ export default function LoginForm() {
       if (error) throw error
       toast.success("Logged in successfully")
       router.push("/dashboard")
-    } catch (err: any) {
-      toast.error(err?.message ?? "Failed to sign in")
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to sign in"
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
@@ -41,8 +42,9 @@ export default function LoginForm() {
     try {
       const { error } = await supabase.auth.signInWithOAuth({ provider: "google" })
       if (error) throw error
-    } catch (err: any) {
-      toast.error(err?.message ?? "Google sign-in failed")
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Google sign-in failed"
+      toast.error(errorMessage)
       setLoading(false)
     }
   }

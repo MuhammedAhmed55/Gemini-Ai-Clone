@@ -129,7 +129,7 @@ export default function StatsAndTestimonials() {
 
                 {/* Content */}
                 <p className="text-base text-foreground mb-6 leading-relaxed">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </p>
 
                 {/* Author */}

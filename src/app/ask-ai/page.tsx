@@ -8,7 +8,7 @@ import {
   createConversation,
   addMessage,
   getConversations,
-  updateConversationTitle,
+  deleteConversation,
   generateTitleFromMessage,
   type Conversation,
 } from "@/lib/conversations";
@@ -113,8 +113,6 @@ function AskAIClient({
       toast.error("Failed to delete conversation");
     }
   };
-
-  const { deleteConversation } = require("@/lib/conversations");
 
   const sendMessage = async () => {
     const trimmed = input.trim();

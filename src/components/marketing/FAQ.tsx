@@ -100,7 +100,7 @@ export default function FAQ() {
         {/* CTA */}
         <div className="mt-12 sm:mt-16 text-center">
           <p className="text-muted-foreground mb-4">
-            Didn't find what you're looking for?
+            Didn&apos;t find what you&apos;re looking for?
           </p>
           <a
             href="/help"

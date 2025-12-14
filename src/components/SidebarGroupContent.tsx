@@ -19,13 +19,6 @@ type Note = {
   updated_at?: string | null;
 };
 
-function formatLocal(dateStr?: string | null) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return "";
-  return d.toLocaleString();
-}
-
 function getTitleAndSnippet(text: string) {
   const lines = (text || "").split(/\r?\n/);
   const title = (lines.find((l) => l.trim().length > 0) || "Untitled").slice(0, 60);

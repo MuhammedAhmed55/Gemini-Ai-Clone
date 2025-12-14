@@ -55,8 +55,9 @@ export default function SignUpForm() {
       // Step 4: Notify and redirect
       toast.success("Verification email sent. Please check your inbox.");
       router.push("/check-email");
-    } catch (err: any) {
-      toast.error(err?.message ?? "Failed to sign up");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to sign up"
+      toast.error(errorMessage)
     } finally {
       setLoading(false);
     }
@@ -70,8 +71,9 @@ export default function SignUpForm() {
       const { error } = await supabase.auth.signInWithOAuth({ provider: "google" })
       if (error) throw error
       // Redirect happens via OAuth flow
-    } catch (err: any) {
-      toast.error(err?.message ?? "Google sign-in failed")
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Google sign-in failed"
+      toast.error(errorMessage)
       setLoading(false)
     }
   }

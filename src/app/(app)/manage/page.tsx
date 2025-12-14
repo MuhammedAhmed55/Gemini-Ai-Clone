@@ -11,7 +11,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
 import {
   Edit,
@@ -26,7 +25,6 @@ import {
   Save,
   X,
   ArrowLeft,
-  Download,
 } from "lucide-react";
 import { toast } from "sonner";
 
