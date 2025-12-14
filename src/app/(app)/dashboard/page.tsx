@@ -1,7 +1,7 @@
 "use client";
 
 // Import React hooks for state management and side effects
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 // Import reusable Button component from shadcn/ui
 import { Button } from "@/components/ui/button";
 // Import Supabase client for database operations (auth & data queries)
@@ -13,7 +13,8 @@ import { MessageCircle, PlusCircle, Save, BarChart3, Lightbulb, Clock, Copy, Che
 // Import Next.js navigation hooks to handle routing and URL parameters
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function NotesPage() {
+// Wrapper component to handle useSearchParams
+function DashboardContent() {
   // Initialize Supabase client for database/auth operations
   const supabase = createClient();
   // Initialize Next.js router for client-side navigation
@@ -321,5 +322,13 @@ export default function NotesPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function NotesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+      <DashboardContent />
+    </Suspense>
   );
 }
