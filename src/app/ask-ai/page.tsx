@@ -8,6 +8,7 @@ import {
   createConversation,
   addMessage,
   getConversations,
+  getConversationWithMessages,
   deleteConversation,
   generateTitleFromMessage,
   type Conversation,
@@ -67,6 +68,33 @@ function AskAIClient({
     };
     loadConversations();
   }, []);
+
+  // Load messages when conversation ID changes
+  useEffect(() => {
+    const loadConversationMessages = async () => {
+      if (currentConversationId) {
+        try {
+          const result = await getConversationWithMessages(currentConversationId);
+          if (result && result.messages) {
+            const mappedMessages = result.messages.map((msg: any) => ({
+              role: msg.role,
+              content: msg.content,
+            }));
+            setMessages(mappedMessages.length > 0 ? mappedMessages : [
+              {
+                role: "ai",
+                content: "Hi! I'm your AI note assistant. Ask me anything about your note — I can help you summarize, expand, refine, or understand it better. What would you like to know?",
+              },
+            ]);
+          }
+        } catch (error) {
+          console.error("Failed to load conversation messages:", error);
+          toast.error("Failed to load conversation");
+        }
+      }
+    };
+    loadConversationMessages();
+  }, [currentConversationId]);
 
   // Create new conversation
   const handleNewConversation = async () => {
