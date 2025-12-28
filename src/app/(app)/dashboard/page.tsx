@@ -51,7 +51,7 @@ function DashboardContent() {
       // Store the user ID in state so we can use it in other queries
       setUserId(data.user?.id ?? null);
     })();
-  }, []);
+  }, [supabase.auth]);
 
   // ========== EFFECT: LOAD NOTE FROM DATABASE ==========
   // Runs when noteParam or userId changes
@@ -80,7 +80,7 @@ function DashboardContent() {
       }
     };
     load();
-  }, [noteParam, userId]);
+  }, [noteParam, userId, supabase]);
 
   // ========== FUNCTION: CREATE NEW NOTE ==========
   // Called when user clicks "New Note" button

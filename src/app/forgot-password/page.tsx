@@ -48,13 +48,13 @@ export default function ForgotPasswordPage() {
           <CardContent className="pt-8">
             <div className="space-y-4 text-center">
               <p className="text-muted-foreground">
-                We've sent a password reset link to <span className="font-semibold text-foreground">{email}</span>
+                We&apos;ve sent a password reset link to <span className="font-semibold text-foreground">{email}</span>
               </p>
               <p className="text-sm text-muted-foreground">
                 Check your email and click the link to reset your password. The link will expire in 1 hour.
               </p>
               <p className="text-sm text-muted-foreground">
-                Didn't receive the email? Check your spam folder.
+                Didn&apos;t receive the email? Check your spam folder.
               </p>
             </div>
           </CardContent>

@@ -50,16 +50,16 @@ export default function SignUpForm() {
 
     try {
       // Step 1 → Signup
-      const { data: signUpData, error } = await supabase.auth.signUp({
+      const signUpResult = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
           data: { name: data.name }, // metadata
         },
       })
-      if (error) throw error
+      if (signUpResult.error) throw signUpResult.error
 
-      const userId = signUpData.user?.id
+      const userId = signUpResult.data?.user?.id
 
       // Step 2 → Insert user into DB
       if (userId) {
@@ -73,8 +73,9 @@ export default function SignUpForm() {
       toast.success("Account created! Check your email for verification.")
       router.push("/check-email")
 
-    } catch (err: any) {
-      toast.error(err.message || "Signup failed")
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Signup failed"
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }

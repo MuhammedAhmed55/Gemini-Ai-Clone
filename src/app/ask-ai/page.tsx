@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Send, Sparkles, ArrowLeft, Copy, Check, Plus, Trash2, MessageCircle } from "lucide-react";
 import {
@@ -20,15 +20,11 @@ type Message = {
   content: string;
 };
 
-// ✅ FIXED VERSION — async function & awaited searchParams
-export default async function AskAIPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ note?: string; conversation?: string }>;
-}) {
-  const params = await searchParams;
-  const noteText = params?.note || "";
-  const conversationId = params?.conversation || "";
+// ✅ Client page: read query via useSearchParams
+export default function AskAIPage() {
+  const params = useSearchParams();
+  const noteText = params.get("note") ?? "";
+  const conversationId = params.get("conversation") ?? "";
 
   return <AskAIClient noteText={noteText} conversationId={conversationId} />;
 }
@@ -76,7 +72,7 @@ function AskAIClient({
         try {
           const result = await getConversationWithMessages(currentConversationId);
           if (result && result.messages) {
-            const mappedMessages = result.messages.map((msg: any) => ({
+            const mappedMessages = result.messages.map((msg: { role: "user" | "ai"; content: string }) => ({
               role: msg.role,
               content: msg.content,
             }));

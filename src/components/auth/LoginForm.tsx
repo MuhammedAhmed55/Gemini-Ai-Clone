@@ -41,15 +41,16 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginFormType) => {
     setLoading(true)
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const result = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
       })
-      if (error) throw error
+      if (result.error) throw result.error
       toast.success("Logged in successfully")
       router.push("/dashboard")
-    } catch (err: any) {
-      toast.error(err?.message || "Failed to sign in")
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to sign in"
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
