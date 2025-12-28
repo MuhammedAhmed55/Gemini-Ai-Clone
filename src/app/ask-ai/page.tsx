@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Send, Sparkles, ArrowLeft, Copy, Check, Plus, Trash2, MessageCircle } from "lucide-react";
@@ -12,7 +12,7 @@ import {
   deleteConversation,
   generateTitleFromMessage,
   type Conversation,
-} from "@/lib/conversations";
+} from "@/lib/conversations"; 
 import { toast } from "sonner";
 
 type Message = {
@@ -20,8 +20,16 @@ type Message = {
   content: string;
 };
 
-// ✅ Client page: read query via useSearchParams
+// ✅ Wrap in Suspense to handle useSearchParams during SSR
 export default function AskAIPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+      <AskAIContent />
+    </Suspense>
+  );
+}
+
+function AskAIContent() {
   const params = useSearchParams();
   const noteText = params.get("note") ?? "";
   const conversationId = params.get("conversation") ?? "";
